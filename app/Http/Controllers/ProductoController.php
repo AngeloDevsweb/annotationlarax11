@@ -27,8 +27,8 @@ class ProductoController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'nullable|string',
-            'precio' => 'required|numeric|min:0',
-            'cantidad' =>'required|integer|min:0'
+            'precio' => 'required|numeric|min:1',
+            'cantidad' =>'required|integer|min:1'
         ]);
         //crear producto asociado al usuario
         Producto::create([

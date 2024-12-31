@@ -12,35 +12,50 @@
                 <div class="mb-4">
                     <label for="name" class="block text-sm font-medium text-gray-700">Nombre del Producto</label>
                     <input type="text" id="name" name="nombre" 
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        value="{{ old('nombre') }}"
+                        class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm 
                         placeholder="Ejemplo: Laptop Dell" required>
+                    @error('nombre')
+                        <span class="text-sm text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
-        
+
                 <!-- Descripción -->
                 <div class="mb-4">
                     <label for="description" class="block text-sm font-medium text-gray-700">Descripción</label>
                     <textarea id="description" name="descripcion" rows="4"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                        placeholder="Ejemplo: Descripción detallada del producto..." required></textarea>
+                        class="mt-1 block w-full rounded-md border-gray-300  shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder="Ejemplo: Descripción detallada del producto..." required>{{ old('descripcion') }}</textarea>
+                    @error('descripcion')
+                        <span class="text-sm text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
-        
+
                 <!-- Precio -->
                 <div class="mb-4">
                     <label for="price" class="block text-sm font-medium text-gray-700">Precio</label>
                     <input type="number" id="price" name="precio" step="0.01"
+                        value="{{ old('precio') }}"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         placeholder="Ejemplo: 199.99" required>
+                    @error('precio')
+                        <span class="text-sm text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
-        
+
                 <!-- Cantidad -->
                 <div class="mb-4">
                     <label for="quantity" class="block text-sm font-medium text-gray-700">Cantidad</label>
                     <input type="number" id="quantity" name="cantidad" step="1" min="1"
+                        value="{{ old('cantidad') }}"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         placeholder="Ejemplo: 10" required
-                        oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '');" >
+                    @error('cantidad')
+                        <span class="text-sm text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
-        
+
                 <!-- Botón de Enviar -->
                 <div class="flex justify-end">
                     <button type="submit"
