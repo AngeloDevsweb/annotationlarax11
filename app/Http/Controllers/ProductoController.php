@@ -29,7 +29,12 @@ class ProductoController extends Controller
             'descripcion' => 'nullable|string',
             'precio' => 'required|numeric|min:1',
             'cantidad' =>'required|integer|min:1'
-        ]);
+        ],[
+            'cantidad.required' => 'La cantidad es obligatoria.',
+            'cantidad.integer' => 'La cantidad debe ser un número entero.',
+            'cantidad.min' => 'La cantidad no puede ser menor que 1.',
+        ]
+        );
         //crear producto asociado al usuario
         Producto::create([
             'user_id'=>Auth::id(),
