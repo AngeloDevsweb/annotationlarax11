@@ -15,13 +15,27 @@
                     <p class="text-lg">Cantidad: {{$producto->cantidad}}</p>
                     <!-- Botón de Enviar -->
                     <div class="flex justify-end">
-                        <button type="submit"
-                            class="px-4 py-2 bg-indigo-600 text-white font-semibold rounded-md shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                            Eliminar Producto
-                        </button>
+                        <form action="{{ route('productos.destroy', $producto->id) }}" method="POST" id="delete-form">
+                            @csrf
+                            @method('DELETE')
+                            <button id="delete-button" type="submit"
+                                class="px-4 py-2 bg-indigo-600 text-white font-semibold rounded-md shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                Eliminar Producto
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Script para la ventana de confirmación -->
+    <script>
+        document.getElementById('delete-button').addEventListener('click', function (event) {
+            event.preventDefault(); // Evita que el formulario se envíe automáticamente
+            const confirmation = confirm('¿Estás seguro de que deseas eliminar este producto?');
+            if (confirmation) {
+                document.getElementById('delete-form').submit(); // Envía el formulario si el usuario confirma
+            }
+        });
+    </script>
 </x-app-layout>

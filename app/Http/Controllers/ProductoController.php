@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function Pest\Laravel\delete;
+
 class ProductoController extends Controller
 {
     //
@@ -72,5 +74,8 @@ class ProductoController extends Controller
     public function destroy($id)
     {
         // Lógica para eliminar
+        $producto = Producto::findOrFail($id);
+        $producto->delete();
+        return redirect()->route('productos.index');
     }
 }
