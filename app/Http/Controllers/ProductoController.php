@@ -51,6 +51,12 @@ class ProductoController extends Controller
     public function show($id)
     {
         // Mostrar un producto específico
+        $producto = Producto::where('id', $id)->first();
+        return view('productos.show', compact('producto'));
+
+        //otra opcion de show        
+        // $producto = Producto::findOrFail($id);
+        // return view('productos.show', compact('producto'));
     }
 
     public function edit($id)
