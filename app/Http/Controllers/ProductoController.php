@@ -63,12 +63,34 @@ class ProductoController extends Controller
 
     public function edit($id)
     {
-        return view('productos.edit');
+        $producto = Producto::findORFail($id);
+        return view('productos.edit', compact('producto'));
     }
 
     public function update(Request $request, $id)
     {
         // Lógica para actualizar
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'descripcion' => 'nullable|string',
+            'precio' => 'required|numeric|min:1',
+            'cantidad' =>'required|integer|min:1'
+        ],[
+            'cantidad.required' => 'La cantidad es obligatoria.',
+            'cantidad.integer' => 'La cantidad debe ser un número entero.',
+            'cantidad.min' => 'La cantidad no puede ser menor que 1.',
+        ]
+        );
+        $producto = Producto::findOrFail($id);
+
+        $producto->update([
+            'nombre' => $request->nombre,
+            'descripcion' => $request->descripcion,
+            'precio' => $request->precio,
+            'cantidad' => $request->cantidad
+        ]);
+
+        return redirect()->route('productos.index');
     }
 
     public function destroy($id)

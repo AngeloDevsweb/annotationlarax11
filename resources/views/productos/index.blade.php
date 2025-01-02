@@ -43,7 +43,7 @@
                                         <a href="{{ route('productos.show', $product->id) }}"><ion-icon name="desktop"></ion-icon></a>
                                     </td>
                                     <td class="border px-4 py-2">
-                                        <a href=""><ion-icon name="create"></ion-icon></a>
+                                        <a href="{{ route('productos.edit', $product->id) }}"><ion-icon name="create"></ion-icon></a>
                                     </td>
                                 </tr>
                             @empty
