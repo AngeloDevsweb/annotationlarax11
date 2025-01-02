@@ -11,8 +11,8 @@
                 <div class="p-8">
                     <h4 class="font-semibold text-2xl">Nombre de producto: {{$producto->nombre}}</h4>
                     <p class="font-light text-lg">{{$producto->descripcion}}</p>
-                    <p class="text-lg">Precio: {{$producto->precio}}</p>
-                    <p class="text-lg">Cantidad: {{$producto->cantidad}}</p>
+                    <p class="text-lg">Precio: {{$producto->precio}} $.</p>
+                    <p class="text-lg">Cantidad: {{$producto->cantidad}} U.</p>
                     <!-- Botón de Enviar -->
                     <div class="flex justify-end">
                         <form action="{{ route('productos.destroy', $producto->id) }}" method="POST" id="delete-form">

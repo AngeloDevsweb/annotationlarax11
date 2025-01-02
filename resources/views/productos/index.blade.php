@@ -14,11 +14,7 @@
                         <p>{{ session('success') }}</p>
                     </div>
                 @endif
-
-                <div class="p-6 text-gray-900">
-                    <h3>BIENVENIDO, AQUI VERAS TODOS TUS PRODUCTOS</h3>
-                </div>
-                <div>
+                <div class="pt-6">
                     <a href="{{ route('productos.create') }}"
                         class="bg-blue-500 text-white px-4 py-2 rounded mx-4">Agregar Nuevo</a>
                     <table class="table-auto w-full mt-4">
