@@ -14,7 +14,12 @@ class ProductoController extends Controller
     //
     public function index()
     {
-        $productos = Producto::where('user_id', Auth::id())->get();
+        //version sin paginacion consulta
+        //$productos = Producto::where('user_id', Auth::id())->get();
+
+        //con paginacion
+        //$productos = Producto::paginate(5);
+        $productos = Producto::where('user_id', Auth::id())->paginate(5); // 5 productos por página
         return view('productos.index', compact('productos'));;
     }
 
